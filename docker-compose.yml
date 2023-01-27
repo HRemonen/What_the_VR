@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    image: what_the_hsl
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+      - 8000:8000
+    container_name: what_the_hsl
