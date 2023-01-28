@@ -18,6 +18,7 @@ app.get('/api/locations', async (_req, res) => {
   const locations = await pollTrainLocations()
   res.json(locations)
 })
+
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(__dirname, '../../build')
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
