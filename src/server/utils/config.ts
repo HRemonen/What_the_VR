@@ -2,5 +2,7 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-// eslint-disable-next-line import/prefer-default-export
 export const PORT = process.env.PORT || 8000
+
+export const LOCATION_API =
+  'https://rata.digitraffic.fi/api/v1/train-locations.geojson/latest/'

@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
-import boilerRouter from './routes/boiler'
+import pollTrainLocations from './services/trainLocationPoller'
 import { PORT } from './utils/config'
 
 const app = express()
@@ -14,8 +14,10 @@ app.get('/api/health', (_req, res) => {
   res.send('OK')
 })
 
-app.use('/api/boiler', boilerRouter)
-
+app.get('/api/locations', async (_req, res) => {
+  const locations = await pollTrainLocations()
+  res.json(locations)
+})
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(__dirname, '../../build')
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
