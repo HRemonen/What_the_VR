@@ -15,7 +15,8 @@
   // "include": ["src/**/*"],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "allowSyntheticDefaultImports": true
     }
   }
 }
