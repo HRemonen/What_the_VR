@@ -17,12 +17,12 @@ With this app, users can view real-time train information on a map, plan their t
 
 1. Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
 
-2. Clone the [repository](https://github.com/HRemonen/What_the_VR) for the VR Train Tracker app:
+2. Clone the [repository](https://github.com/HRemonen/What_the_VR) for the What the VR source code:
 
 3. Navigate to the cloned repository:
 
 ```bash
-  cd vr-train-tracker
+  cd what_the_vr
 ```
 
 4. Build the Docker images and start the containers using Docker Compose:
@@ -31,7 +31,7 @@ With this app, users can view real-time train information on a map, plan their t
 docker-compose up
 ```
 
-This command will build the necessary images and start the containers for the VR Train Tracker app.
+This command will build the necessary images and start the containers for the What the VR application.
 
 5. Once the containers are running, the app should be accessible at `http://localhost:3000`.
 
@@ -43,7 +43,7 @@ docker-compose down
 
 ## How to use
 
-1. Download and install the VR Train Tracker app on your device.
+1. Download and install the What the VR on your device.
 2. Launch the app and select your desired train line.
 3. View the train locations and schedule information on the map.
 4. Use the trip planning feature to plan your journey.
