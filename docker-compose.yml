@@ -5,10 +5,10 @@ services:
     build:
       context: ./
       dockerfile: dev.Dockerfile
-    image: what_the_hsl
+    image: what_the_vr
     volumes:
       - ./:/usr/src/app
     ports:
       - 3000:3000
       - 8000:8000
-    container_name: what_the_hsl
+    container_name: what_the_vr

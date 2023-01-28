@@ -1,5 +1,5 @@
 {
-  "name": "what-the-hsl",
+  "name": "what-the-vr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,8 +13,6 @@
     "axios": "^1.2.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "gtfs-realtime-bindings": "^1.1.1",
-    "node-fetch": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
