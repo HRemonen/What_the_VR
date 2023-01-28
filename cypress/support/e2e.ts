@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+// eslint-disable-next-line import/prefer-default-export
 export const baseUrl = 'localhost:8000'
 
 // Alternatively you can use CommonJS syntax:
