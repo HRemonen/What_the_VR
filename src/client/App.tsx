@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import './App.css'
 
-mapboxgl.accessToken = ''
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const App = () => {
   const mapContainer = useRef(null)
