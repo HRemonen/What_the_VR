@@ -27,9 +27,6 @@ const RenderMapBox = () => {
       setLat(map.current.getCenter().lat.toFixed(4))
       setZoom(map.current.getZoom().toFixed(2))
     })
-    console.log(
-      `Map reloaded to position (lat, lng): (${lat}, ${lng}), zoom: ${zoom}`
-    )
   })
 
   return (
