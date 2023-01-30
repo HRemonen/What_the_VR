@@ -1,17 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
+import useTrainLocations from '../../hooks/useTrainLocations'
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const RenderMapBox = () => {
   const mapContainer = useRef(null)
   const map = useRef(null)
+  const trainLocations = useTrainLocations()
   const [lat, setLat] = useState(60.192)
   const [lng, setLng] = useState(24.9458)
   const [zoom, setZoom] = useState(9)
 
   useEffect(() => {
     if (map.current) return // initialize map only once
+    console.log('Loading new map...')
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
@@ -29,8 +32,13 @@ const RenderMapBox = () => {
     })
   })
 
+  console.log('trainLocations', trainLocations)
+
   return (
     <div>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
       <div ref={mapContainer} className="map-container" />
     </div>
   )
