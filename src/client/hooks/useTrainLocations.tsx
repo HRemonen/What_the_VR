@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { FeatureCollection } from '../types'
 
-function useTrainLocations() {
+function useTrainLocations(): FeatureCollection {
   const [trainLocations, setTrainLocations] = useState(null)
 
   useEffect(() => {
-    axios
-      .get('/api/locations')
-      .then((locationData) => setTrainLocations(locationData.data))
-  }, [])
+    const interval = setInterval(() => {
+      axios
+        .get('/api/locations')
+        .then((locationData) => setTrainLocations(locationData.data))
+    }, 10000)
+
+    return () => clearInterval(interval)
+  })
 
   return trainLocations
 }
