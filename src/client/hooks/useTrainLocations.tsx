@@ -3,18 +3,17 @@ import axios from 'axios'
 import { FeatureCollection } from '../types'
 
 function useTrainLocations(): FeatureCollection {
-  const [trainLocations, setTrainLocations] = useState(null)
+  const [trainLocations, setTrainLocations] = useState<FeatureCollection>(null)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios
+    const interval = setInterval(async () => {
+      await axios
         .get('/api/locations')
         .then((locationData) => setTrainLocations(locationData.data))
-    }, 10000)
+    }, 1000)
 
     return () => clearInterval(interval)
   })
-
   return trainLocations
 }
 

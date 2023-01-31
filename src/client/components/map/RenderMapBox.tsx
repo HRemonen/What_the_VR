@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef, useState, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import useTrainLocations from '../../hooks/useTrainLocations'
@@ -24,20 +25,34 @@ const RenderMapBox = () => {
   })
 
   useEffect(() => {
-    if (!map.current) return // wait for map to initialize
-    map.current.on('move', () => {
-      setLng(map.current.getCenter().lng.toFixed(4))
-      setLat(map.current.getCenter().lat.toFixed(4))
-      setZoom(map.current.getZoom().toFixed(2))
-    })
-  })
+    if (!trainLocations) return // wait for locations to load
 
-  console.log('trainLocations', trainLocations)
+    if (map.current.getSource('trainLocations')) {
+      console.log('Updating train locations...')
+      map.current.getSource('trainLocations').setData(trainLocations)
+    } else {
+      map.current.addSource('trainLocations', {
+        type: 'geojson',
+        data: trainLocations,
+      })
+      map.current.addLayer({
+        id: 'trainLocations',
+        type: 'circle',
+        source: 'trainLocations',
+        paint: {
+          'circle-radius': 6,
+          'circle-color': '#B42222',
+        },
+      })
+    }
+  }, [trainLocations])
 
   return (
     <div>
       <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        {trainLocations
+          ? `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`
+          : 'Loading train locations'}
       </div>
       <div ref={mapContainer} className="map-container" />
     </div>
